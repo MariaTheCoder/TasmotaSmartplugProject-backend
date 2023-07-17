@@ -48,17 +48,39 @@ async function getSmartPlugData() {
   }
 
   if (environment === "production") {
-    // Use this call to fetch api on Kerim's end
     console.log("running in " + environment);
 
     try {
+      // Use this call to fetch api on Kerim's end
       const promises = serverSettings.devices.map((device) =>
         fetch(`http://${device}/cm?cmnd=STATUS%200`).then((res) => res.json())
       );
 
       const results = await Promise.allSettled(promises);
 
-      return results;
+      const smartPlugData = results.map((result) => {
+        let newDataObject = {};
+
+        newDataObject.Total = result.StatusSNS.ENERGY.Total;
+        newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
+        newDataObject.Today = result.StatusSNS.ENERGY.Today;
+        newDataObject.POWER = result.StatusSTS.POWER;
+        newDataObject.kWhPrice = serverSettings.kWh;
+        newDataObject.totalPrice = (
+          newDataObject.Total * newDataObject.kWhPrice
+        ).toFixed(3);
+        newDataObject.yesterdayPrice = (
+          newDataObject.Yesterday * newDataObject.kWhPrice
+        ).toFixed(3);
+        newDataObject.todayPrice = (
+          newDataObject.Today * newDataObject.kWhPrice
+        ).toFixed(3);
+
+        return newDataObject;
+      });
+
+      console.log("smartPlugData: ", smartPlugData);
+      return smartPlugData;
     } catch (err) {
       console.error(err);
     }
