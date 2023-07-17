@@ -1,25 +1,13 @@
 const serverSettings = require("./settings.json");
 const express = require("express");
+// const fetch = (...args) =>
+//   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 // create our app
 const app = express();
 const port = 5502;
 
-// const fetch = (...args) =>
-//   import("node-fetch").then(({ default: fetch }) => fetch(...args));
-
 app.get("/", (req, res) => {
-  res.send("Can you see me?");
-});
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}.`);
-});
-
-console.log(serverSettings);
-
-async function main() {
-  // The code below can be used as mock data for this project
   const devices = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(
@@ -30,12 +18,22 @@ async function main() {
 
   devices
     .then((value) => {
+      res.status(200).send(value);
       console.log(value.length);
     })
     .catch((err) => {
       console.error(err);
     });
+});
 
+app.listen(port, () => {
+  console.log(`Listening on port ${port}.`);
+});
+
+console.log(serverSettings);
+
+async function main() {
+  // The code below can be used as mock data for this project
   // Use this call to fetch api on Kerim's end
   // const promises = serverSettings.devices.map((device) =>
   //   fetch(`http://${device}/cm?cmnd=STATUS%200`)
@@ -46,4 +44,4 @@ async function main() {
   // console.log(results.length);
 }
 
-main();
+// main();
