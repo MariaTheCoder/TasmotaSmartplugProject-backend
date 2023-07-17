@@ -10,8 +10,9 @@ const port = 5502;
 
 // enable all cors requests
 app.use(cors());
+app.use("/", express.static("public"));
 
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   const smartPlugData = await getSmartPlugData();
   res.json(smartPlugData);
 });
