@@ -12,7 +12,7 @@ async function main() {
   //     .then((res) => res.json())
   //     .catch((err) => console.error(err))
   // );
-  // const results = await Promise.all(promises);
+  // const results = await Promise.allSettled(promises);
   // console.log(results.length);
 }
 
