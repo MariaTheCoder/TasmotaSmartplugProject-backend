@@ -40,8 +40,31 @@ async function getSmartPlugData() {
 
       const response = await devices;
 
+      const smartPlugData = response.map((result) => {
+        let newDataObject = {};
+
+        newDataObject.Total = result.StatusSNS.ENERGY.Total;
+        newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
+        newDataObject.Today = result.StatusSNS.ENERGY.Today;
+        newDataObject.POWER = result.StatusSTS.POWER;
+        newDataObject.kWhPrice = serverSettings.kWh;
+        newDataObject.totalPrice = (
+          newDataObject.Total * newDataObject.kWhPrice
+        ).toFixed(3);
+        newDataObject.yesterdayPrice = (
+          newDataObject.Yesterday * newDataObject.kWhPrice
+        ).toFixed(3);
+        newDataObject.todayPrice = (
+          newDataObject.Today * newDataObject.kWhPrice
+        ).toFixed(3);
+
+        return newDataObject;
+      });
+
+      console.log("smartPlugData: ", smartPlugData);
+
       // return response to client
-      return response;
+      return smartPlugData;
     } catch (err) {
       console.error(err);
     }
