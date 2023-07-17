@@ -30,10 +30,10 @@ app.get("/", async (req, res) => {
   // const promises = serverSettings.devices.map((device) =>
   //   fetch(`http://${device}/cm?cmnd=STATUS%200`)
   //     .then((res) => res.json())
-  //     .then((values) =>
+  //     .then((data) =>
   //       res
   //         .status(200)
-  //         .send(values)
+  //         .send(data)
   //         .catch((err) => console.error(err))
   //     )
   // );
