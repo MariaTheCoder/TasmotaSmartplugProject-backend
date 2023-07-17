@@ -8,6 +8,7 @@ const app = express();
 const port = 5502;
 
 app.get("/", (req, res) => {
+  // The code below can be used as mock data for this project
   const devices = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(
@@ -24,16 +25,7 @@ app.get("/", (req, res) => {
     .catch((err) => {
       console.error(err);
     });
-});
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}.`);
-});
-
-console.log(serverSettings);
-
-async function main() {
-  // The code below can be used as mock data for this project
   // Use this call to fetch api on Kerim's end
   // const promises = serverSettings.devices.map((device) =>
   //   fetch(`http://${device}/cm?cmnd=STATUS%200`)
@@ -42,6 +34,10 @@ async function main() {
   // );
   // const results = await Promise.allSettled(promises);
   // console.log(results.length);
-}
+});
 
-// main();
+app.listen(port, () => {
+  console.log(`Listening on port ${port}.`);
+});
+
+console.log(serverSettings);
