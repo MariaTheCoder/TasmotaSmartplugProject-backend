@@ -14,7 +14,18 @@ function fetchDataFromBackend() {
         console.log(element);
 
         for (key in element) {
-          createGridElement("div", `${key}: ${element[key]}`, index);
+          if (key === "Total" || key === "Yesterday" || key === "Today") {
+            createGridElement("div", `${key}: kWh ${element[key]}`, index);
+          } else if (
+            key === "kWhPrice" ||
+            key === "totalPrice" ||
+            key === "yesterdayPrice" ||
+            key === "todayPrice"
+          ) {
+            createGridElement("div", `${key}: €${element[key]}`, index);
+          } else {
+            createGridElement("div", `${key}: ${element[key]}`, index);
+          }
         }
       });
     })
