@@ -44,11 +44,12 @@ async function getSmartPlugData() {
       const smartPlugData = response.map((result) => {
         let newDataObject = {};
 
+        newDataObject.DeviceName = result.Status.DeviceName;
         newDataObject.Total = result.StatusSNS.ENERGY.Total;
         newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
         newDataObject.Today = result.StatusSNS.ENERGY.Today;
         newDataObject.POWER = result.StatusSTS.POWER;
-        newDataObject.kWhPrice = serverSettings.kWh;
+        newDataObject.kWhPrice = serverSettings.kWh / 100;
         newDataObject.totalPrice = (
           newDataObject.Total * newDataObject.kWhPrice
         ).toFixed(3);
@@ -61,6 +62,9 @@ async function getSmartPlugData() {
 
         return newDataObject;
       });
+
+      // lastly, add an object that contains total for each property accross the objects, so for example total price for today's power usage
+      // smartPlugData{};
 
       console.log("smartPlugData: ", smartPlugData);
 
@@ -85,11 +89,12 @@ async function getSmartPlugData() {
       const smartPlugData = results.map((result) => {
         let newDataObject = {};
 
+        newDataObject.DeviceName = result.Status.DeviceName;
         newDataObject.Total = result.StatusSNS.ENERGY.Total;
         newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
         newDataObject.Today = result.StatusSNS.ENERGY.Today;
         newDataObject.POWER = result.StatusSTS.POWER;
-        newDataObject.kWhPrice = serverSettings.kWh;
+        newDataObject.kWhPrice = serverSettings.kWh / 100;
         newDataObject.totalPrice = (
           newDataObject.Total * newDataObject.kWhPrice
         ).toFixed(3);
