@@ -1,0 +1,6 @@
+#grid-container {
+  display: grid;
+  grid-template-rows: repeat(8, auto);
+  grid-template-columns: repeat(3, auto);
+  gap: 1em;
+}
