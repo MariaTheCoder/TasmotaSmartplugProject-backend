@@ -7,7 +7,7 @@ const express = require("express");
 const app = express();
 const port = 5502;
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
   // The code below can be used as mock data for this project
   const devices = new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -30,7 +30,12 @@ app.get("/", (req, res) => {
   // const promises = serverSettings.devices.map((device) =>
   //   fetch(`http://${device}/cm?cmnd=STATUS%200`)
   //     .then((res) => res.json())
-  //     .catch((err) => console.error(err))
+  //     .then((values) =>
+  //       res
+  //         .status(200)
+  //         .send(values)
+  //         .catch((err) => console.error(err))
+  //     )
   // );
   // const results = await Promise.allSettled(promises);
   // console.log(results.length);
