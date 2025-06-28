@@ -9,8 +9,9 @@ const app = express();
 const port = 5502;
 
 // enable all cors requests
+app.use(express.json());
 app.use(cors());
-app.use("/", express.static("public"));
+// app.use("/", express.static("public"));
 
 app.get("/api", async (req, res) => {
   const smartPlugData = await getSmartPlugData();
@@ -42,23 +43,12 @@ async function getSmartPlugData() {
       const response = await devices;
 
       const smartPlugData = response.map((result) => {
+        console.log("result: ", result);
         let newDataObject = {};
 
-        newDataObject.DeviceName = result.Status.DeviceName;
-        newDataObject.Total = result.StatusSNS.ENERGY.Total;
-        newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
-        newDataObject.Today = result.StatusSNS.ENERGY.Today;
+        newDataObject.DeviceName = result.Status.FriendlyName;
+        newDataObject.IPAddress = result.StatusNET.IPAddress;
         newDataObject.POWER = result.StatusSTS.POWER;
-        newDataObject.kWhPrice = serverSettings.kWh / 100;
-        newDataObject.totalPrice = (
-          newDataObject.Total * newDataObject.kWhPrice
-        ).toFixed(3);
-        newDataObject.yesterdayPrice = (
-          newDataObject.Yesterday * newDataObject.kWhPrice
-        ).toFixed(3);
-        newDataObject.todayPrice = (
-          newDataObject.Today * newDataObject.kWhPrice
-        ).toFixed(3);
 
         return newDataObject;
       });
@@ -66,7 +56,7 @@ async function getSmartPlugData() {
       // lastly, add an object that contains total for each property accross the objects, so for example total price for today's power usage
       // smartPlugData{};
 
-      console.log("smartPlugData: ", smartPlugData);
+      // console.log("smartPlugData: ", smartPlugData);
 
       // return response to client
       return smartPlugData;
