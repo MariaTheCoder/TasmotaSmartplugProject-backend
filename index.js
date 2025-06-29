@@ -45,7 +45,7 @@ async function getSmartPlugData() {
         console.log("result: ", result);
         let newDataObject = {};
 
-        newDataObject.DeviceName = result.value.Status.DeviceName;
+        newDataObject.DeviceName = result.value.Status.FriendlyName[0];
         newDataObject.IPAddress = result.value.StatusNET.IPAddress;
         newDataObject.POWER = result.value.StatusSTS.POWER;
 
@@ -79,7 +79,7 @@ async function getSmartPlugData() {
         console.log("result: ", result);
         let newDataObject = {};
 
-        newDataObject.DeviceName = result.value.Status.DeviceName;
+        newDataObject.DeviceName = result.value.Status.FriendlyName[0];
         newDataObject.IPAddress = result.value.StatusNET.IPAddress;
         newDataObject.POWER = result.value.StatusSTS.POWER;
 

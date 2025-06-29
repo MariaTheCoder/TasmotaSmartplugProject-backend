@@ -2,6 +2,10 @@ GET http://192.168.69.233/cm?cmnd=STATUS%200
 
 ###
 
+GET http://192.168.69.234/cm?cmnd=STATUS%200
+
+###
+
 GET http://192.168.69.233/cm?cmnd=Power%20TOGGLE
 
 ###
@@ -11,3 +15,12 @@ GET http://192.168.69.234/cm?cmnd=Power%20TOGGLE
 ###
 
 GET http://192.168.69.233/cm?cmnd=State
+
+###
+
+GET http://192.168.69.233/cm?cmnd=FriendlyName%20Lamp
+
+
+###
+
+GET http://192.168.69.234/cm?cmnd=FriendlyName%20TV

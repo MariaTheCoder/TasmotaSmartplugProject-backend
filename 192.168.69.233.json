@@ -4,7 +4,9 @@
     "Status": {
       "Module": 0,
       "DeviceName": "Tasmota",
-      "FriendlyName": [],
+      "FriendlyName": [
+        "Tasmota"
+      ],
       "Topic": "tasmota_835A1E",
       "ButtonTopic": "0",
       "Power": "1",
