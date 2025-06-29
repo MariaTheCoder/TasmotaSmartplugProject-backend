@@ -46,9 +46,9 @@ async function getSmartPlugData() {
         console.log("result: ", result);
         let newDataObject = {};
 
-        newDataObject.DeviceName = result.Status.FriendlyName;
-        newDataObject.IPAddress = result.StatusNET.IPAddress;
-        newDataObject.POWER = result.StatusSTS.POWER;
+        newDataObject.DeviceName = result.value.Status.DeviceName;
+        newDataObject.IPAddress = result.value.StatusNET.IPAddress;
+        newDataObject.POWER = result.value.StatusSTS.POWER;
 
         return newDataObject;
       });
@@ -71,29 +71,20 @@ async function getSmartPlugData() {
     try {
       // Use this call to fetch api on Kerim's end
       const promises = serverSettings.devices.map((device) =>
+        // fetch(`http://${device}/cm?cmnd=STATUS%200`).then((res) => res.json())
+        // fetch(`http://${device}/cm?cmnd=Power%20TOGGLE`).then((res) => res.json())
         fetch(`http://${device}/cm?cmnd=STATUS%200`).then((res) => res.json())
       );
 
       const results = await Promise.allSettled(promises);
 
       const smartPlugData = results.map((result) => {
+        console.log("result: ", result);
         let newDataObject = {};
 
-        newDataObject.DeviceName = result.Status.DeviceName;
-        newDataObject.Total = result.StatusSNS.ENERGY.Total;
-        newDataObject.Yesterday = result.StatusSNS.ENERGY.Yesterday;
-        newDataObject.Today = result.StatusSNS.ENERGY.Today;
-        newDataObject.POWER = result.StatusSTS.POWER;
-        newDataObject.kWhPrice = serverSettings.kWh / 100;
-        newDataObject.totalPrice = (
-          newDataObject.Total * newDataObject.kWhPrice
-        ).toFixed(3);
-        newDataObject.yesterdayPrice = (
-          newDataObject.Yesterday * newDataObject.kWhPrice
-        ).toFixed(3);
-        newDataObject.todayPrice = (
-          newDataObject.Today * newDataObject.kWhPrice
-        ).toFixed(3);
+        newDataObject.DeviceName = result.value.Status.DeviceName;
+        newDataObject.IPAddress = result.value.StatusNET.IPAddress;
+        newDataObject.POWER = result.value.StatusSTS.POWER;
 
         return newDataObject;
       });
