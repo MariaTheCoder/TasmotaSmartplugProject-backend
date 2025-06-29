@@ -1,84 +1,143 @@
 {
-  "Status": {
-    "Module": 1,
-    "FriendlyName": "XXX",
-    "Topic": "sonoff",
-    "ButtonTopic": "0",
-    "Power": 0,
-    "PowerOnState": 0,
-    "LedState": 1,
-    "SaveData": 0,
-    "SaveState": 1,
-    "ButtonRetain": 0,
-    "PowerRetain": 0
-  },
-  "StatusPRM": {
-    "Baudrate": 115200,
-    "GroupTopic": "sonoffs",
-    "OtaUrl": "XXX",
-    "Uptime": "1 02:33:26",
-    "Sleep": 150,
-    "BootCount": 32,
-    "SaveCount": 72,
-    "SaveAddress": "FB000"
-  },
-  "StatusFWR": {
-    "Version": "5.12.0a",
-    "BuildDateTime": "2018.02.11 16:15:40",
-    "Boot": 31,
-    "Core": "2_4_0",
-    "SDK": "2.1.0(deb1901)"
-  },
-  "StatusLOG": {
-    "SerialLog": 0,
-    "WebLog": 4,
-    "SysLog": 0,
-    "LogHost": "domus1",
-    "LogPort": 514,
-    "SSId1": "XXX",
-    "SSId2": "XXX",
-    "TelePeriod": 300,
-    "SetOption": "00000001"
-  },
-  "StatusMEM": {
-    "ProgramSize": 457,
-    "Free": 544,
-    "Heap": 23,
-    "ProgramFlashSize": 1024,
-    "FlashSize": 1024,
-    "FlashMode": 3
-  },
-  "StatusNET": {
-    "Hostname": "XXX",
-    "IPAddress": "192.168.178.XX",
-    "Gateway": "192.168.178.XX",
-    "Subnetmask": "255.255.255.XX",
-    "DNSServer": "192.168.178.XX",
-    "Mac": "2C:3A:E8:XX:XX:XX",
-    "Webserver": 2,
-    "WifiConfig": 4
-  },
-  "StatusTIM": {
-    "UTC": "Thu Feb 15 00:00:50 2018",
-    "Local": "Thu Feb 15 01:00:50 2018",
-    "StartDST": "Sun Mar 25 02:00:00 2018",
-    "EndDST": "Sun Oct 28 03:00:00 2018",
-    "Timezone": 1
-  },
-  "StatusSNS": {
-    "Time": "2018.02.15 01:00:50",
-    "Switch1": "OFF"
-  },
-  "StatusSTS": {
-    "Time": "2018.02.15 01:00:50",
-    "Uptime": "1 02:33:26",
-    "Vcc": 3.504,
-    "POWER": "OFF",
-    "Wifi": {
-      "AP": 1,
-      "SSId": "XXX",
-      "RSSI": 100,
-      "APMac": "34:31:C4:XX:XX:XX"
+  "status": "fulfilled",
+  "value": {
+    "Status": {
+      "Module": 0,
+      "DeviceName": "Tasmota",
+      "FriendlyName": [],
+      "Topic": "tasmota_834137",
+      "ButtonTopic": "0",
+      "Power": "1",
+      "PowerLock": "0",
+      "PowerOnState": 3,
+      "LedState": 1,
+      "LedMask": "FFFF",
+      "SaveData": 1,
+      "SaveState": 1,
+      "SwitchTopic": "0",
+      "SwitchMode": [],
+      "ButtonRetain": 0,
+      "SwitchRetain": 0,
+      "SensorRetain": 0,
+      "PowerRetain": 0,
+      "InfoRetain": 0,
+      "StateRetain": 0,
+      "StatusRetain": 0
+    },
+    "StatusPRM": {
+      "Baudrate": 115200,
+      "SerialConfig": "8N1",
+      "GroupTopic": "tasmotas",
+      "OtaUrl": "http://ota.tasmota.com/tasmota/release/tasmota.bin.gz",
+      "RestartReason": "Software/System restart",
+      "Uptime": "0T02:50:24",
+      "StartupUTC": "2025-06-29T09:08:41",
+      "Sleep": 50,
+      "CfgHolder": 4617,
+      "BootCount": 4,
+      "BCResetTime": "2025-06-27T15:43:29",
+      "SaveCount": 23,
+      "SaveAddress": "F9000"
+    },
+    "StatusFWR": {
+      "Version": "15.0.1(release-tasmota)",
+      "BuildDateTime": "2025-06-14T10: 30: 42",
+      "Boot": 31,
+      "Core": "2_7_8",
+      "SDK": "2.2.2-dev(38a443e)",
+      "CpuFrequency": 80,
+      "Hardware": "ESP8266EX",
+      "CR": "346/699"
+    },
+    "StatusLOG": {
+      "SerialLog": 2,
+      "WebLog": 2,
+      "MqttLog": 0,
+      "SysLog": 0,
+      "LogHost": "",
+      "LogPort": 514,
+      "SSId": [],
+      "TelePeriod": 300,
+      "Resolution": "558180C0",
+      "SetOption": []
+    },
+    "StatusMEM": {
+      "ProgramSize": 655,
+      "Free": 348,
+      "Heap": 23,
+      "ProgramFlashSize": 1024,
+      "FlashSize": 1024,
+      "FlashChipId": "1460C4",
+      "FlashFrequency": 40,
+      "FlashMode": "DOUT",
+      "Features": [],
+      "Drivers": "1,2,3,!4,!5,!6,7,!8,9,10,12,!16,!18,!19,!20,!21,!22,!24,26,!27,29,!30,!35,!37,!45,62,!68",
+      "Sensors": "1,2,3,4,5,6",
+      "I2CDriver": "7"
+    },
+    "StatusNET": {
+      "Hostname": "tasmota-834137-0311",
+      "IPAddress": "192.168.69.234",
+      "Gateway": "192.168.69.1",
+      "Subnetmask": "255.255.255.0",
+      "DNSServer1": "192.168.69.1",
+      "DNSServer2": "0.0.0.0",
+      "Mac": "34: 94: 54: 83: 41: 37",
+      "Webserver": 2,
+      "HTTP_API": 1,
+      "WifiConfig": 4,
+      "WifiPower": 17
+    },
+    "StatusMQT": {
+      "MqttHost": "",
+      "MqttPort": 1883,
+      "MqttClientMask": "DVES_%06X",
+      "MqttClient": "DVES_834137",
+      "MqttUser": "DVES_USER",
+      "MqttCount": 0,
+      "MqttTLS": 0,
+      "MAX_PACKET_SIZE": 1200,
+      "KEEPALIVE": 30,
+      "SOCKET_TIMEOUT": 4
+    },
+    "StatusTIM": {
+      "UTC": "2025-06-29T11: 59: 05Z",
+      "Local": "2025-06-29T12: 59: 05",
+      "StartDST": "2025-03-30T02: 00: 00",
+      "EndDST": "2025-10-26T03: 00: 00",
+      "Timezone": "+01: 00",
+      "Sunrise": "04: 50",
+      "Sunset": "20: 57"
+    },
+    "StatusPTH": {
+      "PowerDelta": 0,
+      "PowerLow": 0,
+      "PowerHigh": 0,
+      "VoltageLow": 0,
+      "VoltageHigh": 0,
+      "CurrentLow": 0,
+      "CurrentHigh": 0,
+      "MaxPower": 0,
+      "MaxPowerHold": 10,
+      "MaxPowerWindow": 30,
+      "MaxEnergy": 0,
+      "MaxEnergyStart": 0
+    },
+    "StatusSNS": {
+      "Time": "2025-06-29T12: 59: 05",
+      "ENERGY": []
+    },
+    "StatusSTS": {
+      "Time": "2025-06-29T12: 59: 05",
+      "Uptime": "0T02: 50: 24",
+      "UptimeSec": 10224,
+      "Heap": 23,
+      "SleepMode": "Dynamic",
+      "Sleep": 50,
+      "LoadAvg": 19,
+      "MqttCount": 0,
+      "POWER": "ON",
+      "Wifi": []
     }
   }
 }
