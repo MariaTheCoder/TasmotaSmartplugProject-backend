@@ -11,7 +11,6 @@ const port = 5502;
 // enable all cors requests
 app.use(express.json());
 app.use(cors());
-// app.use("/", express.static("public"));
 
 app.get("/api", async (req, res) => {
   const smartPlugData = await getSmartPlugData();
@@ -71,8 +70,6 @@ async function getSmartPlugData() {
     try {
       // Use this call to fetch api on Kerim's end
       const promises = serverSettings.devices.map((device) =>
-        // fetch(`http://${device}/cm?cmnd=STATUS%200`).then((res) => res.json())
-        // fetch(`http://${device}/cm?cmnd=Power%20TOGGLE`).then((res) => res.json())
         fetch(`http://${device}/cm?cmnd=STATUS%200`).then((res) => res.json())
       );
 
